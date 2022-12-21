@@ -6,19 +6,22 @@ import formatPokemonName from "../utils/formatPokemonName";
 
 export default function Main() {
   const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(
-    "https://pokeapi.co/api/v2/pokemon"
+    "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"
   );
   const [prevPage, setPrevPage] = useState("");
   const [nextPage, setNextPage] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     axios.get(currentPage).then((res) => {
       setPrevPage(res.data.previous);
       setNextPage(res.data.next);
       setPokemons(
         res.data.results.map((pokemon) => formatPokemonName(pokemon.name))
       );
+      setLoading(false);
     });
   }, [currentPage]);
 
@@ -34,8 +37,9 @@ export default function Main() {
       <PaginationContent
         onPrev={prevPage && loadPrevPage}
         onNext={nextPage && loadNextPage}
+        currentPage={currentPage}
       />
-      <PokemonList pokemonList={pokemons} />
+      <PokemonList pokemonList={pokemons} loading={loading} />
     </>
   );
 }
