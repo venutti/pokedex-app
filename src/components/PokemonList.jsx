@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Placeholder from "react-bootstrap/Placeholder";
@@ -23,6 +23,15 @@ const displayList = (pokemonList, onClick) => {
 export default function PokemonList({ pokemonList }) {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(true);
+
+  useEffect(() => {
+    if (!pokemonList) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [pokemonList]);
+
   return (
     <>
       <Container>
