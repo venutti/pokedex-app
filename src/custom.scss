@@ -1,0 +1,50 @@
+$redPokemon: #c71117;
+$blackPokemon: #302c2c;
+$grayPokemon: #494646;
+$whitePokemon: #ffffff;
+
+.headerContent {
+  background-color: $redPokemon;
+  padding: 1rem 2rem;
+}
+.logo {
+  display: block;
+  margin: 0 auto;
+  width: 80vw;
+  max-width: 400px;
+  height: auto;
+}
+.paginationContent {
+  background-color: $blackPokemon;
+  display: flex;
+  justify-content: center;
+}
+.pagination {
+  margin: 0;
+}
+.container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+.list-group {
+  display: flex;
+  justify-content: center;
+}
+
+$pagination-color: $redPokemon;
+$pagination-bg: $blackPokemon;
+$pagination-border-color: $blackPokemon;
+$pagination-hover-color: $redPokemon;
+$pagination-hover-bg: $grayPokemon;
+$pagination-hover-border-color: $redPokemon;
+$pagination-focus-color: $redPokemon;
+$pagination-focus-bg: $grayPokemon;
+$pagination-disabled-color: $whitePokemon;
+$pagination-disabled-bg: $blackPokemon;
+$pagination-disabled-border-color: $blackPokemon;
+
+
+
+// importar la hoja de estilos de Bootstrap
+@import "~bootstrap/scss/bootstrap.scss"
