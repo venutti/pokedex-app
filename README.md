@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# POKEDEX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositorio se hizo para empezar a usar las librerias _react-bootstrap_, _axios_ y _node-sass_.
 
-## Available Scripts
+## node-sass
 
-In the project directory, you can run:
+Se necesita instalar esta extensión para poder estilizar los componentes de Bootstrap, sin tener que correr un **sass --watch** o algo por el estilo.
 
-### `npm start`
+`npm install node-sass`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+¡Y cada vez que se compile webpack, también lo hará Sass!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## react-bootstrap
 
-### `npm test`
+Se usa para poder trabajar con componentes en vez de andar escribiendo muchas clases. Para ver más ventajas de esta librería, revisar [este link](https://react-bootstrap.github.io/getting-started/why-react-bootstrap/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Se necesita incluir la hoja de estilos de Bootstrap para que se renderice correctamente, y la manera de hacerlo para luego poder customizar es tener un archivo **custom.scss** con lo siguiente (previamente habiendo instalado Bootstrap):
 
-### `npm run build`
+`npm install bootstrap`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+/* en custom.scss */
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+// customizaciones
+$primary: tomato;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// loading de Bootstrap
+@import "~bootstrap/scss/bootstrap.scss"
+```
 
-### `npm run eject`
+Y luego se necesita importar `custom.scss` en nuestro archivo **index.js**.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usando ghPages
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para poder subir el proyecto a un servidor de ghPages se necesitan seguir los siguientes pasos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Instalar el paquete "gh-pages" de forma global:
+   `npm install -g gh-pages`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Agregar la siguiente línea al "package.json":
+   `"homepage": "http://tu-usuario-de-github.github.io/nombre-del-repositorio"
+`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Ejecutar el siguiente comando para construir la aplicación y publicarla en Github Pages:
+   `npm run build && gh-pages -d build`
