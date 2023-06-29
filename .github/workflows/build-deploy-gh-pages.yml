@@ -6,6 +6,9 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -32,10 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v1.0.9
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./build
-          
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+          folder: build
