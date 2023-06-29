@@ -2,7 +2,7 @@ name: Pre Pages Build and Deploy
 
 on:
   workflow_run:
-    workflows: ["pages-build-deployment"]
+    workflows: ["pages-build-deployment", "pages build and deployment"]
     types:
       - started
 
