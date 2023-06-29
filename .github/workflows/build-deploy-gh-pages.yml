@@ -15,27 +15,24 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
         
       - name: Set up Node.js
         uses: actions/setup-node@v2.5.2
+    
+      - name: Create .env file
+        run: echo "REACT_APP_MESSAGE=${{ secrets.REACT_API_MESSAGE }}" > .env
         
       - name: Install dependencies
         run: npm install
 
+      - name: Build
+        run: npm run build
         
-      - name: Create .env file
-        run: |
-          echo "REACT_APP_MESSAGE=${{ secrets.REACT_API_MESSAGE }}" > .env
-          cat .env
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          
